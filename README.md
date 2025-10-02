@@ -1,65 +1,58 @@
+
 # Flood Monitoring
 
-Run this on a Raspberry Pi or Jetson Nano.
+Run on Raspberry Pi or Jetson Nano.
 
-## Getting started
-
-1. Open Terminal and change to the project folder (example):
+1) Make `install.sh` executable and run it, or double-click it in the file manager:
 
 ```bash
-cd ~/DataServerRPI
+./install.sh
 ```
 
-2. Run the installer (this sets up everything):
+No `sudo` required unless your system specifically asks for it.
 
-```bash
-sudo bash install.sh
-```
+The installer registers the application ("Flood Monitor") in the application menu and may open the dashboard automatically.
 
-After that the app is installed and ready. You can:
-- Double-click the FloodMonitoring icon on the desktop to start the dashboard, or
-- Start it from Terminal with:
-
-```bash
-bash launch.sh
-```
-
-Open the dashboard in a browser at:
+2) If the dashboard is not already open, open a browser on the device and go to:
 
 http://localhost:8501
 
-To stop the app started from Terminal: press Ctrl+C. To stop a background start:
+To stop the app started in the background:
 
 ```bash
 pkill -f "app.py" || pkill -f streamlit
 ```
 
-## Quick technical reference
+## Technical (compact)
 
-Manual install and run:
+Manual install & run:
 
 ```bash
 python3 -m pip install -r requirements.txt
-bash launch.sh
+./launch.sh
 ```
 
-Environment variables you may use:
-- OPENWEATHER_API_KEY — OpenWeather API key (optional)
-- SERIAL_PORT — serial device path (e.g. /dev/ttyUSB0)
-- BAUDRATE — serial speed (default 115200)
+Key environment variables:
+- `OPENWEATHER_API_KEY` — OpenWeather API key (optional)
+- `SERIAL_PORT` — serial device path (e.g. `/dev/ttyUSB0`) or `AUTO`
+- `BAUDRATE` — serial speed (default `115200`)
+- `CSV_PATH` — path to CSV (default `data/data.csv`)
 
-CSV file: `data/data.csv` (columns: EntryTimeUTC,Latitude,Longitude,Temperature,Humidity,Light,Precipitation,WaterLevel)
+CSV schema (columns written to `data/data.csv`):
+EntryTimeUTC,Latitude,Longitude,Temperature,Humidity,Light,Precipitation,WaterLevel
+
+Typical microcontroller serial lines accepted:
+- `DATA,24.7,51.2,22340,0,Nominal`
+- `24.7,51.2,22340,0,Nominal`
 
 OpenWeather API quick steps:
-1. Create a free account at https://openweathermap.org/.
-2. In your profile, go to "API keys" and generate a key.
-3. On the device run:
+1. Sign up at https://openweathermap.org/.
+2. In your profile, create an API key.
+3. Set it for the session and start the app:
 
 ```bash
 export OPENWEATHER_API_KEY=your_key_here
-bash launch.sh
+./launch.sh
 ```
 
-Make the key persistent by adding the export to `~/.profile`.
-
----
+That's all.
