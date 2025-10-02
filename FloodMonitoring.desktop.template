@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Name=Flood Monitor
+Comment=Launch the flood monitoring dashboard
+Exec=%%EXEC_PATH%%
+Icon=network-server
+Terminal=false
+Type=Application
+Categories=Application;Network;Dashboard;
+StartupNotify=true

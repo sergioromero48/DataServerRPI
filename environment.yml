@@ -1,0 +1,15 @@
+name: flood-monitoring
+channels:
+  - conda-forge
+dependencies:
+  - python=3.10
+  - streamlit
+  - pandas
+  - numpy
+  - plotly
+  - folium
+  - streamlit-folium
+  - requests
+  - pyserial
+  - pyarrow
+  - boto3
