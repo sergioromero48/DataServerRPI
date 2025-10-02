@@ -23,12 +23,21 @@ To stop the app started in the background:
 pkill -f "app.py" || pkill -f streamlit
 ```
 
-## Technical (compact)
+## Technical
 
 Manual install & run:
 
+Use the installer:
+
 ```bash
-python3 -m pip install -r requirements.txt
+./install.sh
+```
+
+Or create the conda environment provided and run the launcher:
+
+```bash
+conda env create -f environment.yml
+conda activate flood-monitor
 ./launch.sh
 ```
 
@@ -54,5 +63,3 @@ OpenWeather API quick steps:
 export OPENWEATHER_API_KEY=your_key_here
 ./launch.sh
 ```
-
-That's all.
